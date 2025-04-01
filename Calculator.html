@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* style.css */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.calculator {
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  text-align: right;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button {
+  font-size: 18px;
+  padding: 20px;
+  border: none;
+  /* background-color: #f0f0f0; */
+  background-color: black;
+  color: white;
+  text-align: center;
+  /* text-shadow: #e0e0e0; */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.001s;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+.operator {
+  background-color: #fc9d06;
+  color: white;
+  transition: background-color 0.001s;
+}
+
+.operator:hover {
+  background-color: #e6890f;
+}
+
+button:focus {
+  outline: none;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" class="display" disabled />
+    <div class="buttons">
+      <button class="button" onclick="appendNumber(7)">7</button>
+      <button class="button" onclick="appendNumber(8)">8</button>
+      <button class="button" onclick="appendNumber(9)">9</button>
+      <button class="button operator" onclick="appendOperator('+')">+</button>
+      
+      <button class="button" onclick="appendNumber(4)">4</button>
+      <button class="button" onclick="appendNumber(5)">5</button>
+      <button class="button" onclick="appendNumber(6)">6</button>
+      <button class="button operator" onclick="appendOperator('-')">-</button>
+      
+      <button class="button" onclick="appendNumber(1)">1</button>
+      <button class="button" onclick="appendNumber(2)">2</button>
+      <button class="button" onclick="appendNumber(3)">3</button>
+      <button class="button operator" onclick="appendOperator('*')">*</button>
+      
+      <button class="button" onclick="appendNumber(0)">0</button>
+      <button class="button" onclick="clearDisplay()">C</button>
+      <button class="button" onclick="calculateResult()">=</button>
+      <button class="button operator" onclick="appendOperator('/')">/</button>
+    </div>
+  </div>
+
+</body>
+<script>
+    // script.js
+
+let currentInput = '';
+let operator = '';
+let previousInput = '';
+
+const display = document.getElementById('display');
+
+function appendNumber(number) {
+  currentInput += number;
+  display.value = currentInput;
+}
+
+function appendOperator(op) {
+  if (currentInput === '') return;
+  if (previousInput !== '') {
+
+    calculateResult();
+  }
+  operator += op;
+  previousInput += currentInput;
+  currentInput = '';
+  display.value+=operator;
+}
+
+function clearDisplay() {
+  currentInput = '';
+  previousInput = '';
+  operator = '';
+  display.value = '';
+}
+
+function calculateResult() {
+  if (currentInput === '' || previousInput === '') 
+  return;
+  let result;
+
+  const num1 = parseFloat(previousInput);
+  const num2 = parseFloat(currentInput);
+
+  switch (operator) {
+    case '+':
+      result = num1 + num2;
+      break;
+    case '-':
+      result = num1 - num2;
+      break;
+    case '*':
+      result = num1 * num2;
+      break;
+    case '/':
+      if (num2 === 0) {
+        result = 'Error';
+      } else {
+        result = num1 / num2;
+      }
+      break;
+    default:
+      return;
+  }
+
+  currentInput = result.toString();
+  previousInput = '';
+  operator = '';
+  display.value = currentInput;
+}
+
+</script>
+</html>

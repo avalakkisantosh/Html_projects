@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art - Pikachu</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+
+        /* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Pikachu Container */
+.pikachu {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+/* Head */
+.head {
+    position: absolute;
+    width: 180px;
+    height: 160px;
+    background: #FFD700;
+    border-radius: 50% 50% 45% 45%;
+    top: 20px;
+    left: 60px;
+    z-index: 2;
+}
+
+/* Ears */
+.ear {
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    background: #FFD700;
+    border-radius: 50% 50% 0 0;
+    top: -70px;
+}
+
+.ear.left-ear {
+    left: 20px;
+    transform: rotate(-30deg);
+}
+
+.ear.right-ear {
+    right: 20px;
+    transform: rotate(30deg);
+}
+
+.ear::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background: #DAA520;
+    border-radius: 50% 50% 0 0;
+    bottom: 0;
+    left: 10px;
+}
+
+/* Face */
+.face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Eyes */
+.eye {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background: #000;
+    border-radius: 50%;
+    top: 50px;
+}
+
+.eye.left-eye {
+    left: 40px;
+}
+
+.eye.right-eye {
+    right: 40px;
+}
+
+.eye::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
+
+/* Cheeks */
+.cheek {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #FF69B4;
+    border-radius: 50%;
+    top: 80px;
+}
+
+.cheek.left-cheek {
+    left: 20px;
+}
+
+.cheek.right-cheek {
+    right: 20px;
+}
+
+/* Nose */
+.nose {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Mouth */
+.mouth {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    border-bottom: 3px solid #000;
+    border-radius: 0 0 50% 50%;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Body */
+.body {
+    position: absolute;
+    width: 150px;
+    height: 120px;
+    background: #FFD700;
+    border-radius: 50% 50% 40% 40%;
+    top: 150px;
+    left: 75px;
+    z-index: 1;
+}
+
+/* Arms */
+.arm {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: #FFD700;
+    border-radius: 20px;
+    top: 170px;
+}
+
+.arm.left-arm {
+    left: 50px;
+    transform: rotate(-20deg);
+}
+
+.arm.right-arm {
+    right: 50px;
+    transform: rotate(20deg);
+}
+
+/* Belly */
+.belly {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    background: #FFFACD;
+    border-radius: 50%;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Legs */
+.leg {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    background: #FFD700;
+    border-radius: 20px;
+    bottom: 20px;
+}
+
+.leg.left-leg {
+    left: 90px;
+}
+
+.leg.right-leg {
+    right: 90px;
+}
+
+/* Tail */
+.tail {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background: #FFD700;
+    border-radius: 15px;
+    top: 180px;
+    right: 30px;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.tail::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #DAA520;
+    border-radius: 50%;
+    right: -10px;
+    top: -10px;
+}
+    </style>
+</head>
+<body>
+    <div class="pikachu">
+        <!-- Head -->
+        <div class="head">
+            <div class="ear left-ear"></div>
+            <div class="ear right-ear"></div>
+            <div class="face">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+                <div class="cheek left-cheek"></div>
+                <div class="cheek right-cheek"></div>
+                <div class="mouth"></div>
+                <div class="nose"></div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+            <div class="arm left-arm"></div>
+            <div class="arm right-arm"></div>
+            <div class="belly"></div>
+            <div class="leg left-leg"></div>
+            <div class="leg right-leg"></div>
+        </div>
+
+        <!-- Tail -->
+        <div class="tail"></div>
+    </div>
+</body>
+</html>

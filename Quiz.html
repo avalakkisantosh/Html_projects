@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            padding: 8px;
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .options li:hover {
+            background-color: #4d3a3a;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        #result {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>Quiz App</h2>
+    <div id="quiz">
+        <!-- Questions will be dynamically inserted here -->
+    </div>
+    <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+</div>
+
+<div id="result">
+    <!-- Results will be displayed here -->
+</div>
+
+
+</body>
+<script>
+    // Array to store questions and options
+const quizQuestions = [
+    {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correctAnswer: "Paris"
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        correctAnswer: "Mars"
+    },
+    {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        correctAnswer: "4"
+    },
+    {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["Shakespeare", "Dickens", "Hemingway", "Fitzgerald"],
+        correctAnswer: "Shakespeare"
+    },
+    {
+        question: "what is the largest dam in india?",
+        options: ["ganga", "yamuna", "krishna", "hirakud dam"],
+        correctAnswer: "hirakud dam"
+    },
+    {
+        question: "which state in india is the most litrate?",
+        options: ["karnataka", "kerala", "andrapradesh", "tamilnaadu"],
+        correctAnswer: "kerala"
+    },
+    {
+        question: "What is India's top export item?",
+        options: ["fruit", "flower", "cotton clothes", "non of the above"],
+        correctAnswer: "cotton clothes"
+    },
+    {
+        question: "Which Indian language is known as the 'Italian of the east'?",
+        options: ["telagu", "kannada", "tamil", "malayalam"],
+        correctAnswer: "telagu"
+    },
+    {
+        question: "Which is the oldest operational rail engine in India?",
+        options: ["vondhebarat", "rajarani", "fairyqueen", "martin"],
+        correctAnswer: "fairyqueen"
+    },
+    {
+        question: "What is 97 % 2?",
+        options: ["1", "2", "3", "4"],
+        correctAnswer: "1"
+    },
+];
+
+// Current question index
+let currentQuestionIndex = 0;
+let score = 0;
+
+// Function to display the current question
+function displayQuestion() {
+    const questionContainer = document.getElementById('quiz');
+    const question = quizQuestions[currentQuestionIndex];
+    
+    // Clear previous question
+    questionContainer.innerHTML = '';
+
+    // Display question text
+    const questionElement = document.createElement('div');
+    questionElement.classList.add('question');
+    questionElement.innerHTML = question.question;
+    questionContainer.appendChild(questionElement);
+
+    // Display options
+    const optionsList = document.createElement('ul');
+    optionsList.classList.add('options');
+    question.options.forEach(option => {
+        const optionElement = document.createElement('li');
+        optionElement.innerHTML = option;
+        optionElement.onclick = () => selectAnswer(option);
+        optionsList.appendChild(optionElement);
+    });
+    questionContainer.appendChild(optionsList);
+}
+
+// Function to track the user's answer
+let selectedAnswer = '';
+function selectAnswer(answer) {
+    selectedAnswer = answer;
+}
+
+// Function to check the answer and move to the next question
+function submitQuiz() {
+    const question = quizQuestions[currentQuestionIndex];
+
+    // Check if the answer is correct
+    if (selectedAnswer === question.correctAnswer) {
+        score++;
+    }
+
+    // Move to the next question
+    currentQuestionIndex++;
+
+    // Check if all questions have been answered
+    if (currentQuestionIndex < quizQuestions.length) {
+        displayQuestion();
+    } else {
+        showResults();
+    }
+}
+
+// Function to display the results
+function showResults() {
+    const resultContainer = document.getElementById('result');
+    resultContainer.innerHTML = `You scored ${score} out of ${quizQuestions.length}!`;
+    resultContainer.style.display = 'block';
+
+    // Hide the quiz
+    document.querySelector('.quiz-container').style.display = 'none';
+}
+
+// Initialize the quiz
+displayQuestion();
+
+</script>
+</html>

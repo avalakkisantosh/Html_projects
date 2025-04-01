@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App UI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        /* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #72edf2, #5151e5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.weather-app {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-bar button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s;
+}
+
+.search-bar button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Current Weather */
+.current-weather {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.weather-icon {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.city {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+/* Forecast */
+.forecast h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.forecast-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecast-item {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+}
+
+.forecast-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.forecast-item i {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 500px) {
+    .forecast-items {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="weather-app">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search city...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Current Weather -->
+            <div class="current-weather">
+                <div class="weather-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h1 class="temperature">24°C</h1>
+                <h2 class="city">New York</h2>
+                <div class="details">
+                    <div class="detail">
+                        <i class="fas fa-tint"></i>
+                        <span>Humidity: 65%</span>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <span>Wind: 10 km/h</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast -->
+            <div class="forecast">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-items">
+                    <div class="forecast-item">
+                        <p>Mon</p>
+                        <i class="fas fa-cloud-sun"></i>
+                        <p>22°C</p>
+                    </div>
+                    <div class="forecast-item">
+                        <p>Tue</p>
+                        <i class="fas fa-cloud-rain"></i>
+                        <p>19°C</p>
+                    </div>
+                    <div class="forecast-item">
+                        <p>Wed</p>
+                        <i class="fas fa-sun"></i>
+                        <p>25°C</p>
+                    </div>
+                    <div class="forecast-item">
+                        <p>Thu</p>
+                        <i class="fas fa-cloud"></i>
+                        <p>21°C</p>
+                    </div>
+                    <div class="forecast-item">
+                        <p>Fri</p>
+                        <i class="fas fa-bolt"></i>
+                        <p>18°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
